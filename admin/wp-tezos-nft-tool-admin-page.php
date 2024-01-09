@@ -27,7 +27,20 @@ function tezos_nft_gallery_admin_menu_page(){
 	$row_size = get_option( 'tezos_nft_gallery_row_size', '' );
 ?>
 <div class="wrap">
-	<h1>Tezos NFT Gallery - Settings</h1>
+	<h1>Tezos NFT Gallery</h1>
+	<div class="card">
+		<h3>How to use</h3>
+		<ul>
+			<li>
+				<p>To create a gallery of created tokens, add this shortcode to any post or page:</p>
+				<pre>[tezos_nft_gallery_created]</pre>
+			</li>
+			<li>
+				<p>To create a gallery of owned tokens, add this shortcode to any post or page:</p>
+				<pre>[tezos_nft_gallery_owned]</pre>
+			</li>
+		</ul>
+	</div>
 	<form method="post" action="" id="tezos_nft_gallery_settings_form">
 		<?php wp_nonce_field( 'tezos_nft_gallery_save_settings', 'tezos_nft_gallery_nonce' ); ?>
 		<table class="form-table">
