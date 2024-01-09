@@ -13,7 +13,8 @@ class Tezos_NFT_Gallery {
 
 	public function get_tokens( $type, $current_page = 1 ) {
 		$offset = ( 1 === $current_page ? 0 : ( ( $current_page - 1 ) * $this->page_size ) );
-
+		
+		// TODO: Exclude non-art tokens.
 		if ( 'created' === $type ) {
 			$query = '{"query": "query My{ token( where: {creators: {creator_address: {_in: \"' . $this->address . '\"}}} order_by: {timestamp: desc} limit: ' . ( $this->page_size + 1 ) . ' offset: ' . $offset . ' ) { artifact_uri description display_uri extra metadata mime name supply symbol thumbnail_uri timestamp token_id pk fa_contract fa { collection_id collection_type contract } } }"}';
 		} else {
@@ -28,16 +29,6 @@ class Tezos_NFT_Gallery {
 			'is_last_page'        => $is_last_page,
 			'current_page_tokens' => $current_page_tokens,
 		);
-	}
-
-	private function get_burt_tokens() {
-		// TODO: Discontinue.
-		$request_url = NETWORKS[ $this->network ]['url'] .
-			'v1/tokens/transfers?&sort.desc=id&select=token.id' .
-			'&from=' . $this->address .
-			'&to=tz1burnburnburnburnburnburnburjAYjjX';
-
-		return $this->do_request( $request_url );
 	}
 
 	private function do_request( $query ) {
@@ -107,12 +98,6 @@ class Tezos_NFT_Gallery {
 		}
 
 		$formatted_tokens = array();
-
-		if ( ! empty( $_GET['print'] ) ) {
-			echo '<pre>';
-			print_r( $raw_tokens );
-			echo '</pre>';
-		}
 
 		foreach ( $raw_tokens as $token ) {
 			$token_data       = array();
@@ -194,7 +179,7 @@ class Tezos_NFT_Gallery {
 		$page_3_number = 1 === $current_page ? 3 : ( $current_page + 1 );
 		$page_3_link   = 1 === $current_page ? '?gallery_page=3' : '?gallery_page=' . ( $current_page + 1 );
 		?>
-		<nav aria-label="Page navigation example">
+		<nav>
 			<ul class="pagination justify-content-center">
 				<li class="page-item <?php echo esc_attr( 1 === $current_page ? 'disabled' : '' ); ?>">
 					<a class="page-link" href="?gallery_page=<?php echo esc_attr( $current_page - 1 ); ?>" aria-label="Previous">
