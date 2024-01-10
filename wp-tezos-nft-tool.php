@@ -17,9 +17,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * Include admin page file
+ */
 require_once plugin_dir_path( __FILE__ ) . '/admin/wp-tezos-nft-tool-admin-page.php';
+
+/**
+ * Include Tezos NFT Gallery class file
+ */
 require_once plugin_dir_path( __FILE__ ) . '/includes/class-tezos-nft-gallery.php';
 
+/**
+ * Constant for known token symbols
+ */
 define(
 	'KNOWN_TOKEN_SYMBOLS',
 	array(
@@ -38,6 +48,9 @@ define(
 	)
 );
 
+/**
+ * Constant for allowed mime types
+ */
 define(
 	'ALLOWED_MIME_TYPES',
 	array(
@@ -48,6 +61,9 @@ define(
 	)
 );
 
+/**
+ * Created NFTs gallery shortcode
+ */
 add_shortcode(
 	'tezos_nft_gallery_created',
 	function() {
@@ -60,6 +76,9 @@ add_shortcode(
 	}
 );
 
+/**
+ * Owned NFTs gallery shortcode
+ */
 add_shortcode(
 	'tezos_nft_gallery_owned',
 	function() {
@@ -101,9 +120,11 @@ function tezos_nft_gallery_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'tezos_nft_gallery_scripts' );
 
-
-add_action( 'admin_menu', 'tezos_nft_gallery_admin_menu' );
-
+/**
+ * Admin menu
+ *
+ * @return void
+ */
 function tezos_nft_gallery_admin_menu() {
 	add_menu_page(
 		'Tezos NFT Gallery',
@@ -124,3 +145,5 @@ function tezos_nft_gallery_admin_menu() {
 		'tezos_nft_gallery_admin_menu_page',
 	);
 }
+
+add_action( 'admin_menu', 'tezos_nft_gallery_admin_menu' );

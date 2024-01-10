@@ -1,16 +1,53 @@
 <?php
+/**
+ * NFT Gallery class
+ */
 
+ /**
+  * Tezos_NFT_Gallery class
+  */
 class Tezos_NFT_Gallery {
+	/**
+	 * Wallet address
+	 *
+	 * @var string
+	 */
 	private $address;
+
+	/**
+	 * Gallery page size
+	 *
+	 * @var integer
+	 */
 	private $page_size;
+
+	/**
+	 * Gallery row size
+	 *
+	 * @var integer
+	 */
 	private $row_size;
 
+	/**
+	 * Constructor
+	 * 
+	 * @param string  $address The wallet address to retrieve data from.
+	 * @param integer $page_size The gallery page size.
+	 * @param integer $row_size The gallery row size.
+	 */
 	public function __construct( $address, $page_size, $row_size ) {
 		$this->address   = $address;
 		$this->page_size = $page_size;
 		$this->row_size  = $row_size;
 	}
 
+	/**
+	 * Retrieve tokens by type
+	 *
+	 * @param string $type The type (created or owned).
+	 * @param integer $current_page The current page.
+	 * @return array
+	 */
 	public function get_tokens( $type, $current_page = 1 ) {
 		$offset = ( 1 === $current_page ? 0 : ( ( $current_page - 1 ) * $this->page_size ) );
 		
@@ -31,6 +68,12 @@ class Tezos_NFT_Gallery {
 		);
 	}
 
+	/**
+	 * Execute request to OBJKT's graphql api
+	 *
+	 * @param string $query The query.
+	 * @return array|false
+	 */
 	private function do_request( $query ) {
 		$endpoint = 'https://data.objkt.com/v3/graphql';
 
@@ -50,6 +93,14 @@ class Tezos_NFT_Gallery {
 		return json_decode( $response['body'] );
 	}
 
+	/**
+	 * Assemble a URL for a token in a marketplace where it can be seen/purchased
+	 *
+	 * @param integer $token_id The token ID.
+	 * @param string  $token_symbol The token symbol.
+	 * @param string  $token_contract_address The address of the contract that created the token.
+	 * @return string
+	 */
 	private function get_formatted_url( $token_id, $token_symbol, $token_contract_address ) {
 		$base_url = '';
 		switch ( $token_symbol ) {
@@ -68,14 +119,22 @@ class Tezos_NFT_Gallery {
 		return $base_url;
 	}
 
+	/**
+	 * Whether a string is a valid Tezos wallet address
+	 *
+	 * @param string $address The possible address.
+	 * @return boolean
+	 */
 	public static function is_valid_tezos_address( $address ) {
 		return true;
 	}
 
-	public static function is_valid_tezos_network( $network ) {
-		return in_array( $network, NETWORKS, true );
-	}
-
+	/**
+	 * Assemble a URL for a token's image using the user-selected IPFS gateway
+	 *
+	 * @param string $url The image raw IPFS url.
+	 * @return string
+	 */
 	private function format_image_url( $url ) {
 		$gateways  = array(
 			'cloudfare' => 'https://cloudflare-ipfs.com/ipfs/',
@@ -87,6 +146,12 @@ class Tezos_NFT_Gallery {
 		return $gateway . $image_url;
 	}
 
+	/**
+	 * Render the gallery HTML code.
+	 *
+	 * @param string $type The gallery type (owned/created).
+	 * @return string
+	 */
 	function render_tokens_gallery( $type ) {
 		$current_page = (int) ( $_GET['gallery_page'] ?? 1 );
 		$tokens_data  = $this->get_tokens( $type, $current_page );
@@ -94,7 +159,7 @@ class Tezos_NFT_Gallery {
 		$is_last_page = $tokens_data['is_last_page'];
 
 		if ( ! $raw_tokens ) {
-			// handle error.
+			// TODO: handle error.
 		}
 
 		$formatted_tokens = array();
@@ -171,6 +236,13 @@ class Tezos_NFT_Gallery {
 		return ob_get_clean();
 	}
 
+	/**
+	 * Generate HTML code for pagination
+	 *
+	 * @param integer $current_page The current page.
+	 * @param boolean $is_last_page Whether current page is the last page.
+	 * @return void
+	 */
 	function tezos_nft_gallery_render_pagination( $current_page, $is_last_page ) {
 		$page_1_number = 1 === $current_page ? 1 : ( $current_page - 1 );
 		$page_1_link   = 1 === $current_page ? '#' : '?gallery_page=' . ( $current_page - 1 );

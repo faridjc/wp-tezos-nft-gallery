@@ -1,5 +1,13 @@
 <?php
+/**
+ * Admin page
+ */
 
+ /**
+  * Admin page settings
+  *
+  * @return void
+  */
 function tezos_nft_gallery_admin_menu_page(){
 	if (
 		isset( $_POST['address'] ) && isset( $_POST['gateway'] )  && isset( $_POST['page_size'] )  && isset( $_POST['row_size'] ) && isset( $_POST['tezos_nft_gallery_nonce'] ) &&
