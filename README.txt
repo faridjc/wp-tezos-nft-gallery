@@ -1,8 +1,8 @@
-=== Plugin Name ===
+=== WP Tezos NFTs Gallery ===
 Contributors: faridjc
 Donate link: http://example.com/
 Tags: nft, blockchain, tezos, art, gallery, images
-Requires at least: 6
+Requires at least: 6.0
 Tested up to: 6.4.2
 Stable tag: 1.0.0
 License: GPLv2 or later
@@ -26,6 +26,11 @@ IMPORTANT: This will plugin will *NOT* ask you to connect your wallet or authori
 4. Use the shortcode [tezos_nft_gallery_created] to add a gallery of created tokens.
 5. Use the shortcode [tezos_nft_gallery_owned] to add a gallery of owned tokens.
 
-== Changelog ==
+== Screenshots ==
 
-= Initial release =
+1. Gallery
+2. Admin page
+
+== Changelog ==
+= v1.0.0 =
+* Initial release
