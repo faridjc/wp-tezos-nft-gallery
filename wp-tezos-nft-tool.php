@@ -3,7 +3,7 @@
  * Plugin Name: Tezos NFT Gallery
  * Plugin URI: http://cajabeats.art
  * Description: Display Tezos NFTs on your WordPress website
- * Version: 0.0.1
+ * Version: 1.0.0
  * Author: Farid Colmenarez
  * Author URI: http://cajabeats.art
  *
