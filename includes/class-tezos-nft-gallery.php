@@ -201,7 +201,7 @@ class Tezos_NFT_Gallery {
 
 		ob_start();
 		?>
-		<div class="tezos-nft-tool-container container text-center">
+		<div class="tezos-nft-gallery-container container text-center">
 			<div class="row">
 			<?php
 			foreach ( $formatted_tokens as $formatted_token ) {
@@ -213,12 +213,12 @@ class Tezos_NFT_Gallery {
 					switch ( $formatted_token['format'] ) {
 						case 'audio':
 							?>
-								<span class="tezos-nft-tool-icon dashicons dashicons-format-audio"></span>
+								<span class="tezos-nft-gallery-icon dashicons dashicons-format-audio"></span>
 								<?php
 							break;
 						case 'video':
 							?>
-								<span class="tezos-nft-tool-icon dashicons dashicons-editor-video"></span>
+								<span class="tezos-nft-gallery-icon dashicons dashicons-editor-video"></span>
 								<?php
 							break;
 					}
