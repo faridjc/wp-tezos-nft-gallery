@@ -15,6 +15,8 @@ This plugin allows you to create a gallery of your Tezos NFTs -created and/or ow
 
 This plugin uses objkt.com public API v3 to obtain data automatically, without any action required when new NFTs are added to the wallet address configured.
 
+This plugin or its developers are not linked with the Tezos Fundation or any Tezos-related legal entity. All trademarks belong to their respective owners.
+
 IMPORTANT: This will plugin will *NOT* ask you to connect your wallet or authorize any signature or transaction to the blockchain.
 
 == Installation and usage ==
