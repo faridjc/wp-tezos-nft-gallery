@@ -1,4 +1,4 @@
-=== WP Tezos NFTs Gallery ===
+=== Gallery for Tezos NFTs ===
 Contributors: faridjc
 Tags: nft, blockchain, tezos, art, gallery, images
 Requires at least: 6.0
