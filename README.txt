@@ -1,11 +1,11 @@
 === Gallery for Tezos NFTs ===
 Contributors: faridjc
-Tags: nft, blockchain, tezos, art, gallery, images
+Tags: nft, blockchain, tezos, art, gallery
 Requires at least: 6.0
 Tested up to: 6.4.2
 Stable tag: 1.0.0
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License: GPLv3 or later
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 Display Tezos NFTs on your WordPress website
 
