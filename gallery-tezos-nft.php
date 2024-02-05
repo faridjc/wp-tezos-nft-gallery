@@ -6,6 +6,7 @@
  * Version: 1.0.0
  * Author: Farid Colmenarez
  * Author URI: https://cajabeatsart.com
+ * License: GPLv3
  *
  * @package    WP_Tezos_NFT_Gallery
  */
@@ -31,7 +32,7 @@ require_once plugin_dir_path( __FILE__ ) . '/includes/class-tezos-nft-gallery.ph
  * Constant for known token symbols
  */
 define(
-	'KNOWN_TOKEN_SYMBOLS',
+	'TEZOS_NFT_GALLERY_KNOWN_TOKEN_SYMBOLS',
 	array(
 		'OBJKT'    => array(
 			'base_url' => 'https://teia.art/objkt/',
@@ -52,7 +53,7 @@ define(
  * Constant for allowed mime types
  */
 define(
-	'ALLOWED_MIME_TYPES',
+	'TEZOS_NFT_GALLERY_ALLOWED_MIME_TYPES',
 	array(
 		'image/jpg',
 		'image/jpeg',
@@ -100,7 +101,7 @@ add_shortcode(
 function tezos_nft_gallery_scripts() {
 	wp_enqueue_script(
 		'bootstrap',
-		'https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js',
+		plugin_dir_url( __FILE__ ) . 'assets/js/bootstrap.bundle.min.js',
 		array(),
 		1,
 		false
@@ -108,7 +109,7 @@ function tezos_nft_gallery_scripts() {
 
 	wp_enqueue_style(
 		'bootstrap',
-		'https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css',
+		plugin_dir_url( __FILE__ ) . 'assets/css/bootstrap.bundle.min.css',
 		array(),
 		1
 	);

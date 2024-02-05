@@ -13,9 +13,11 @@ Display Tezos NFTs on your WordPress website
 
 This plugin allows you to create a gallery of your Tezos NFTs -created and/or owned-, and embed it to any post or page using a shortcode. The gallery will automatically show the all the tokens corresponding to the wallet address configured via settings, ordered by latest minted.
 
-This plugin uses objkt.com public API v3 to obtain data automatically, without any action required when new NFTs are added to the wallet address configured.
+Gallery for Tezos NFTs plugin uses objkt.com public API v3 to obtain data automatically, without any action required when new NFTs are added to the wallet address configured.
 
 This plugin or its developers are not linked with the Tezos Fundation or any Tezos-related legal entity. All trademarks belong to their respective owners.
+
+This plugin uses [Bootstrap](https://getbootstrap.com/). 
 
 IMPORTANT: This will plugin will *NOT* ask you to connect your wallet or authorize any signature or transaction to the blockchain.
 

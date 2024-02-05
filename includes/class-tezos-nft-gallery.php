@@ -105,14 +105,14 @@ class Tezos_NFT_Gallery {
 		$base_url = '';
 		switch ( $token_symbol ) {
 			case 'OBJKTCOM':
-				$base_url = KNOWN_TOKEN_SYMBOLS[ $token_symbol ]['base_url'] . $token_contract_address . '/' . $token_id;
+				$base_url = TEZOS_NFT_GALLERY_KNOWN_TOKEN_SYMBOLS[ $token_symbol ]['base_url'] . $token_contract_address . '/' . $token_id;
 				break;
 			default:
-				if ( empty( KNOWN_TOKEN_SYMBOLS[ $token_symbol ] ) ) {
+				if ( empty( TEZOS_NFT_GALLERY_KNOWN_TOKEN_SYMBOLS[ $token_symbol ] ) ) {
 					return '';
 				}
 
-				$base_url = KNOWN_TOKEN_SYMBOLS[ $token_symbol ]['base_url'] . $token_id;
+				$base_url = TEZOS_NFT_GALLERY_KNOWN_TOKEN_SYMBOLS[ $token_symbol ]['base_url'] . $token_id;
 				break;
 		}
 
@@ -208,7 +208,7 @@ class Tezos_NFT_Gallery {
 				?>
 				<div class="col-md-<?php echo esc_attr( '2' === $this->row_size ? 6 : 4 ); ?> col-sm-12 p-3">
 					<figure class="figure">
-					<a target="_blank" href="<?php echo $formatted_token['url']; ?>"><img src="<?php echo $formatted_token['image_url']; ?>" class="figure-img img-fluid rounded <?php echo esc_attr( isset( $formatted_token['is_8bidou'] ) ? 'eightbidou' : '' ); ?>" /></a>
+					<a target="_blank" href="<?php echo esc_attr( $formatted_token['url'] ); ?>"><img src="<?php echo esc_attr( $formatted_token['image_url'] ); ?>" class="figure-img img-fluid rounded <?php echo esc_attr( isset( $formatted_token['is_8bidou'] ) ? 'eightbidou' : '' ); ?>" /></a>
 					<?php
 					switch ( $formatted_token['format'] ) {
 						case 'audio':
@@ -224,7 +224,7 @@ class Tezos_NFT_Gallery {
 					}
 					?>
 					</figure>
-					<figcaption class="figure-caption"><?php echo $formatted_token['name']; ?></figcaption>
+					<figcaption class="figure-caption"><?php echo esc_html( $formatted_token['name'] ); ?></figcaption>
 				</div>
 				<?php
 			}
