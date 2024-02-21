@@ -109,7 +109,7 @@ function tezos_nft_gallery_scripts() {
 
 	wp_enqueue_style(
 		'bootstrap',
-		plugin_dir_url( __FILE__ ) . 'assets/css/bootstrap.bundle.min.css',
+		plugin_dir_url( __FILE__ ) . 'assets/css/bootstrap.min.css',
 		array(),
 		1
 	);
